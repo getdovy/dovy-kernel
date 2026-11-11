@@ -143,6 +143,8 @@ rustc=$(rustc --version)
 pahole=$(pahole --version)
 EOF
     (cd "$OUT" && sha256sum -- *.deb >SHA256SUMS)
+    # GitHub reads release notes as Markdown: a code block keeps the "~".
+    printf 'Build record:\n\n```\n%s\n```\n' "$(cat "$OUT/build-info.txt")" >"$OUT/release-notes.md"
 }
 
 apt-get update -qq
