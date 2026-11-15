@@ -14,7 +14,7 @@ Usage: ./build.sh [-s SERIES] [-r REVISION] [--configure]
   -r REVISION   dovy revision of this kernel version (default 1)
   --configure   stop after the checked .config
 
-MAINTAINER ('Name <address>') goes into the packages.
+MAINTAINER ('Name <address>') goes into the packages; default: the project's.
 EOF
 }
 
@@ -30,7 +30,7 @@ while [ $# -gt 0 ]; do
     shift
 done
 [ "$(id -u)" != 0 ] || die "run as a normal user"
-: "${MAINTAINER:?set MAINTAINER, e.g. MAINTAINER='Name <address>' ./build.sh}"
+: "${MAINTAINER:=dovy maintainers <getdovy@tuta.io>}"
 command -v docker >/dev/null || die "Docker is needed"
 
 # The image is named after the Dockerfile's hash: a change rebuilds it.

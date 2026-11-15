@@ -94,10 +94,13 @@ Needs Docker. The build runs in a Debian 13 container (`Dockerfile`);
 the source tree stays in this folder.
 
 ```sh
-MAINTAINER='Name <address>' ./build.sh              # newest series in backports
-MAINTAINER='Name <address>' ./build.sh -s 7.2 -r 2  # series 7.2, revision 2
-MAINTAINER='Name <address>' ./build.sh --configure  # stop after .config
+./build.sh                # newest series in backports
+./build.sh -s 7.2 -r 2    # series 7.2, revision 2
+./build.sh --configure    # stop after .config
 ```
+
+The packages' maintainer is `dovy maintainers <getdovy@tuta.io>`;
+`MAINTAINER='Name <address>'` sets another.
 
 | Path | Contents |
 |---|---|
